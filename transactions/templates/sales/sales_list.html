@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %} Sales List {% endblock title %}
+
+{% block content %}
+
+    <div class="row" style="color: #575757; font-style: bold; font-size: 3rem;">
+        <div class="col-md-8">Sales List</div>
+        <div class="col-md-4">               
+            <div style="float:right;"> <a class="btn btn-success" href="{% url 'new-sale' %}">New Outgoing Stock</a> </div>
+        </div>
+    </div>
+
+    <br>
+
+    <table class="table table-css table-bordered table-hover"> 
+            
+        <thead class="thead-dark align-middle">
+            <tr><!-- Log on to codeastro.com for more projects -->
+                <th width="10%">Bill No.</th>
+                <th width="15%">Customer</th>
+                <th width="15%">Stocks Sold</th>
+                <th width="10%">Quantity Sold</th>
+                <th width="10%">Total Sold Price</th>
+                <th width="15%">Date</th>
+                <th width="25%">Actions</th>
+            </tr>
+        </thead>
+
+        {% if bills %}
+
+        <tbody>
+            {% for sale in bills %}
+            <tr><!-- Log on to codeastro.com for more projects -->
+                <td class="align-middle"> <p>{{ sale.billno }}</p> </td>
+                <td class=""> {{ sale.name }} <br> <small style="color: #909494">Ph No : {{ sale.phone }}</small> </td>
+                <td class="align-middle">{% for item in sale.get_items_list %} {{ item.stock.name }} <br> {% endfor %}</td>
+                <td class="align-middle">{% for item in sale.get_items_list %} {{ item.quantity }} <br> {% endfor %}</td>     
+                <td class="align-middle">₱{{ sale.get_total_price }}</td>
+                <td class="align-middle">{{ sale.time.date }}</td>
+                <td class="align-middle"> <a href="{% url 'sale-bill' sale.billno %}" class="btn btn-secondary btn-sm">View Bill</a> <a href="{% url 'delete-sale' sale.pk %}" class="btn btn-danger btn-sm">Delete Bill</a> </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+        <tfoot>
+            <!-- Add the total sold price row -->
+            <tr>
+                <td colspan="4" style="text-align: center; font-weight: bold;">Total Sold Price</td>
+                <td style="text-align: center; font-weight: bold;">₱{{ total_sold_price }}</td>
+                <td></td>
+                <td><div style="text-align: center;">
+                    <a class="btn btn-primary" href="{% url 'export-sales-to-csv' %}" target="_blank">Export to CSV</a>
+                </div></td>
+            </tr>
+        </tfoot>
+    </table>
+    
+
+    <!-- Your existing pagination links -->
+    <!-- ... -->
+
+    {% else %}
+
+    <tbody></tbody>  <!-- Log on to codeastro.com for more projects --> 
+    </table>
+
+    <br><br><br><br><br><br><br><br>
+    <div style="color: #575757; font-style: bold; font-size: 1.5rem; text-align: center;">The records are empty. Please try adding some.</div>
+
+{% endif %}
+
+{% endblock content %}

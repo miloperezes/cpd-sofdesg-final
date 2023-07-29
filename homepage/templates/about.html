@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+{% block title %} About {% endblock title %}
+
+
+{% block content %}
+    
+    {% if not user.is_authenticated  %}
+        <br>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Go Back</a>
+    {% endif %}    
+    
+    <div class="align-middle" style="color: #4caf50; font-style: bold; font-size: 3rem;">HIMS</div>
+    <div class="align-middle" style="color: rgb(73, 73, 73)">Hardware Inventory Management System</div>
+    <br><br>
+
+    <div class="align-middle"> 
+        <h2 style="color:#4caf50">| About |</h3> <br>
+            <p>
+                HIMS is an inventory management solution specifically designed to cater to the unique needs of hardware businesses. Our software empowers you to effortlessly monitor incoming and outgoing stock, generate dynamically rendered bills, and maintain comprehensive supplier profiles for seamless transaction history tracking.
+            </p>
+        <br>
+    </div>
+        <h2 style="color:#4caf50" class="align-middle">| Features |</h3> <br>
+            <ul style="display:table; margin:0 auto; ">                
+                <li style="color:#494949;">Interactive Chart to display current available stock</li>
+                <li style="color:#494949;">Stock details like current available stock are maintained</li>
+                <li style="color:#494949;">Incoming transactions are done through purchases</li>
+                <li style="color:#494949;">Outgoing transactions are done through sales</li>
+                <li style="color:#494949;">Every transaction performed through the software is recorded</li>
+                <li style="color:#494949;">Bill is dynamically rendered and can be printed</li>
+                <li style="color:#494949;">Separate profiles are maintained for suppliers</li>
+            </ul>  
+        <br>
+    <div class="align-middle">
+        <h2 style="color:#4caf50" >| Developers |</h3> <br>
+            <p>Buenaventura, Vince Craig S.<br>Perez, Luis Miguel IV G<br>Sta. Monica, Geoffrey V.<br>Velarde Arvin Miguel D.J.</p><br><br>
+    </div>
+
+{% endblock content %}

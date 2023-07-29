@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %} Purchases List {% endblock title %}
+
+{% block content %}
+
+<div class="row" style="color: #575757; font-style: bold; font-size: 3rem;">
+    <div class="col-md-8">Purchases List</div>
+    <div class="col-md-4">          
+        <div style="float:right;"> <a class="btn btn-success" href="{% url 'select-supplier' %}">New Incoming Stock</a> </div>
+    </div>
+</div>
+
+<br>
+
+<table class="table table-css table-hover table-bordered">
+
+    <thead class="thead-dark align-middle">
+        <tr>
+            <th width="10%">Bill No.</th>
+            <th width="15%">Supplier</th>
+            <th width="15%">Stocks Purchased</th>
+            <th width="10%">Quantity Purchased</th>
+            <th width="15%">Total Purchased Price</th>
+            <th width="10%">Purchased Date</th>
+            <th width="25%">Actions</th>
+        </tr>
+    </thead>
+
+    {% if bills %}
+    <tbody>         
+        {% for purchase in bills %}
+        <tr>
+            <td class="align-middle"> <p>{{ purchase.billno }}</p> </td>
+            <td class=""> 
+                {% if purchase.supplier.is_deleted %}
+                    {{ purchase.supplier }}<br> 
+                {% else %}
+                    <a href="{% url 'supplier' purchase.supplier.name %}">{{ purchase.supplier }}</a> <br> 
+                {% endif %}
+                <small style="color: #909494">Ph No : {{ purchase.supplier.phone }}</small> 
+            </td>
+            <td class="align-middle">
+                {% for item in purchase.get_items_list %}
+                    {{ item.stock.name }} <br>
+                {% endfor %}
+            </td>
+            <td class="align-middle">
+                {% for item in purchase.get_items_list %}
+                    {{ item.quantity }} <br>
+                {% endfor %}
+            </td>
+            <td class="align-middle">₱{{ purchase.get_total_price }}</td>
+            <td class="align-middle">{{ purchase.time.date }}</td>
+            <td class="align-middle">
+                <a href="{% url 'purchase-bill' purchase.billno %}" class="btn btn-secondary btn-sm">View Bill</a>
+                <a href="{% url 'delete-purchase' purchase.pk %}" class="btn btn-danger btn-sm">Delete Bill</a>
+            </td>
+        </tr>
+        {% endfor %}
+        <!-- Calculate and display the total purchases price -->
+        <tr>
+            <td></td>
+            <td colspan="3"class="align-middle"><strong>Total Purchased Price:</strong></td>
+            <td class="align-middle"><strong>₱{{ total_purchases }}</strong></td>
+            <td></td>
+            <td><div style="text-align: center;"><a class="btn btn-primary" href="{% url 'export-purchases-to-csv' %}" target="_blank">Export to CSV</a></div></td>
+        </tr>
+    </tbody>
+    {% else %}
+    </table>
+
+    <br><br><br><br><br><br><br><br>
+    <div style="color: #575757; font-style: bold; font-size: 1.5rem; text-align: center;">The records are empty. Please try adding some.</div>
+    {% endif %}
+
+{% endblock content %}
