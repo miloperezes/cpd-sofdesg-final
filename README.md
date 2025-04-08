@@ -57,7 +57,7 @@ Built using **Agile software development**, with iterative planning, stakeholder
 > _Add your screenshots here in your GitHub repo:_
 
 - **Login System**  
-  `screenshots/login.png`
+  `screenshots_folder/login.png`
 
 - **Inventory Dashboard**  
   `screenshots/inventory.png`
