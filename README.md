@@ -56,9 +56,16 @@ Built using **Agile software development**, with iterative planning, stakeholder
 
 ### 🔐 Login Page
 ![Login Page](./screenshots_folder/login.png)
-
-### 📦 Inventory Dashboard
-![Inventory Dashboard](./screenshots_folder/inventory_list.png)
+### 📊 Data Analystics
+![Data Analytics](./screenshots_folder/data_analytics.png)
+### 📈 Live Sales
+![Sales](./screenshots_folder/sales.png)
+### 💵 Bills List
+![Bills](./screenshots_folder/bills.png)
+### 🧾 Generated Receipt Example
+![Bills](./screenshots_folder/bills.png)
+### 📦 Inventory List
+![Inventory List](./screenshots_folder/inventory_list.png)
 
 ## 👥 Authors
 
