@@ -54,19 +54,11 @@ Built using **Agile software development**, with iterative planning, stakeholder
 
 ## 📷 Screenshots
 
-> _Add your screenshots here in your GitHub repo:_
+### 🔐 Login Page
+![Login Page](./screenshots_folder/login.png)
 
-- **Login System**  
-  `screenshots_folder/login.png`
-
-- **Inventory Dashboard**  
-  `screenshots/inventory.png`
-
-- **Data Analytics**  
-  `screenshots/analytics.png`
-
-- **Sales and Billing**  
-  `screenshots/sales_bills.png`
+### 📦 Inventory Dashboard
+![Inventory Dashboard](./screenshots_folder/inventory_list.png)
 
 ## 👥 Authors
 
